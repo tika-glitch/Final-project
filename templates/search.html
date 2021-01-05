@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Dogs
+        </title>
+        <!-- This is the section where we style the webpage.-->
+        <style>
+        .rectangle {
+  height: 100px;
+  width: 1279px;
+  background: linear-gradient(90deg, white, pink, violet, purple);
+}
+   body
+      {
+        text-align: center;
+        background: linear-gradient(90deg, white, pink, violet, purple);
+      }
+        </style>
+    </head>
+    <body>
+        <!--This is the search bar.-->
+        <form method="POST">
+    <input id="search" name="search" type="text" placeholder="Search...">
+    <input type="submit" value="Search">
+</form>
+<!--And this is the code that outputs the dog breed that matches the search results.-->
+{% if show == "yes" %}
+<h1>Search!</h1>
+{% endif %}
+{% if no != "no" %}
+{% for i in dog %}
+{% if i is number %}
+<h5>Intelligence ranking: #{{ i }}</h5>
+{% endif %}
+{% if i is string %}
+{% if i|length < 30 %}
+<h3>The {{ i }}</h3>
+{% endif %}
+{% if i|length > 30 %}
+<h5>{{ i }}</h5>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if no == "no" %}
+<h4>Breed not found</h4>
+{% endif %}
+
+<div class="rectangle"></div>
+</body>
+
+</html>
